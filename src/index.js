@@ -1,46 +1,36 @@
 // import React from 'react';
-import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import profiles from './user.json';
+import './profile.css';
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
+const data = profiles[0];
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
-const Profile = (
-<div class="profile">
-  <div class="description">
-    <img
-      src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
-      alt="User avatar"
-      class="avatar"
-    />
-    <p class="name">Petra Marica</p>
-    <p class="tag">@pmarica</p>
-    <p class="location">Salvador, Brasil</p>
-  </div>
+const profile = (
+  <div class="profile">
+    <div class="description">
+      <img
+        src={data.avatar}
+        alt={data.tag}
+        class="avatar"
+      />
+      <p class="name">{data.username}</p>
+      <p class="tag">{data.tag}</p>
+      <p class="location">{data.location}</p>
+    </div>
 
-  <ul class="stats">
-    <li>
-      <span class="label">Followers</span>
-      <span class="quantity">1000</span>
-    </li>
-    <li>
-      <span class="label">Views</span>
-      <span class="quantity">2000</span>
-    </li>
-    <li>
-      <span class="label">Likes</span>
-      <span class="quantity">3000</span>
-    </li>
-  </ul>
-  </div>)
-const root = ReactDOM.createRoot(document.getElementById('root'));
+    <ul class="stats">
+      <li>
+        <span class="label">Followers</span>
+        <span class="quantity">{data.stats.followers}</span>
+      </li>
+      <li>
+        <span class="label">Views</span>
+        <span class="quantity">{data.stats.views}</span>
+      </li>
+      <li>
+        <span class="label">Likes</span>
+        <span class="quantity">{data.stats.likes}</span>
+      </li>
+    </ul>
+  </div>);
+ReactDOM.render(profile, document.querySelector('#root'));
